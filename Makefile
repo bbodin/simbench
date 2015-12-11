@@ -63,4 +63,9 @@ $(TOPOUTDIR): .FORCE
 	@echo "  MKDIR   $(patsubst $(BASEDIR)/%,%,$@)"
 	$(Q)mkdir -p $@
 
+install : 
+	 cp out/arm/ArndaleBoard/simbench /run/media/toky/BOOT/uImage &&  umount /dev/sdc* ; sync
+
+
 .PHONY: .FORCE
+
