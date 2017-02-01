@@ -5,6 +5,6 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
-          - cp ./docker/arm-config ./arch/arm/Make.config
+          - \cp ./docker/arm-config ./arch/arm/Make.config 
           - ARCH=arm PLATFORM=versatile SIMBENCH_FAST=1 make
           - qemu-system-arm -machine versatileab -kernel out/arm/versatile/simbench -nographic -m 512 -display none -serial stdio -semihosting | host/host
