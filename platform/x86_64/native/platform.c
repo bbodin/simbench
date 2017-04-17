@@ -29,7 +29,23 @@ void platform_init()
 
 void platform_shutdown()
 {
-
+	asm volatile ("mov $0x80000b80, %eax");
+	asm volatile ("movw $0xcf8, %dx");
+	asm volatile ("outl %eax, %dx");
+	asm volatile ("movw $0xcfc, %dx");
+	asm volatile ("inb %dx, %al");
+	asm volatile ("orb $1, %al");
+	asm volatile ("outb %al, %dx");
+	
+	asm volatile ("movl $0x80000b40, %eax");
+	asm volatile ("movw $0xcf8, %dx");
+	asm volatile ("outl  %eax, %dx");
+	asm volatile ("movl $0x7001, %eax");
+	asm volatile ("movw $0xcfc, %dx");
+	asm volatile ("outl  %eax, %dx");
+	asm volatile ("movw $0x2000, %ax");
+	asm volatile ("movw $0x7004, %dx");
+	asm volatile ("outw  %ax, %dx");
 }
 
 uint32_t* platform_get_null_devptr()

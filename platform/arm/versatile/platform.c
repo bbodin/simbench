@@ -11,6 +11,10 @@ void platform_init()
 
 void platform_shutdown()
 {
+	// attempt an ARM ANGEL semihosting shutdown
+
+	asm volatile ("mov r0, #0x18 \n ldr r1, =#0x20026 \n swi #0x123456 \n");	
+
 	while(1);
 }
 
