@@ -6,6 +6,7 @@
 #include <time.h>
 
 #define STR_BENCHMARK_BEGIN "\\\\BENCHMARKS BEGIN\r\n"
+static int benchmarks_read = 0;
 
 int read_start()
 {
@@ -133,6 +134,8 @@ int read_benchmark()
 	
 	printf(" %lf\r\n", benchmarks_seconds);
 	
+	benchmarks_read++;
+	
 	return 0;
 }
 
@@ -144,5 +147,10 @@ int main(int argc, char **argv)
 	
 	printf("Done.\n");
 
-	return 0;
+	if(benchmarks_read == 0) {
+		// didn't read any benchmarks so something probably went wrong
+		return 1;
+	} else {
+		return 0;
+	}
 }
