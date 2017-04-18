@@ -9,6 +9,9 @@ void armv8_install_sync_handler(int ec, exception_handler_t handler);
 int armv8_get_current_el();
 int armv8_in_el1();
 
+void armv8_install_syscall_handler();
+int armv8_handle_syscall();
+
 void armv8_syscall(int call_no);
 
 #endif

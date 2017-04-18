@@ -1,5 +1,7 @@
 #include "arch.h"
+#include "armv8.h"
 #include "debug.h"
+#include "heap.h"
 #include "printf.h"
 #include "syscall.h"
 

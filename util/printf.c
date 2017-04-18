@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int snprintf(char *buffer, int size, const char *fmt, ...)
+int snprintf(char *buffer, size_t size, const char *fmt, ...)
 {
 	int rc;
 	va_list args;
@@ -106,7 +106,7 @@ static int append_str(char *buffer, int size, const char *text, int pad, char pa
 	return n;
 }
 
-int vsnprintf(char *buffer_base, int size, const char *fmt_base, va_list args)
+int vsnprintf(char *buffer_base, size_t size, const char *fmt_base, va_list args)
 {
 	const char *fmt = fmt_base;
 	char *buffer = buffer_base;

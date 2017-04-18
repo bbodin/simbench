@@ -1,3 +1,4 @@
+#include "arch.h"
 #include "harness.h"
 #include "benchmark.h"
 #include "printf.h"
