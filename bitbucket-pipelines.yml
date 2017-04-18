@@ -10,5 +10,7 @@ pipelines:
           - ./test-builds.sh
           - ARCH=arm PLATFORM=versatile make
           - qemu-system-arm -machine versatileab -kernel out/arm/versatile/simbench -nographic -m 512 -display none -serial stdio -semihosting | host/host
+          - ARCH=armv8 PLATFORM=virt make
+          - qemu-system-aarch64 -machine virt -kernel out/armv7/virt/simbench -nographic -m 512 -display none -serial stdio -semihosting | host/host
           - ARCH=x86_64 PLATFORM=native make
           - qemu-system-x86_64 -kernel out/x86_64/native/simbench -nographic | host/host
