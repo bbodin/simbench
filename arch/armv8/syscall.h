@@ -18,6 +18,8 @@
 #define SYSCALL_PRIV_ENTER 8
 #define SYSCALL_PRIV_LEAVE 9
 
+#define SYSCALL_SHUTDOWN 10
+
 void armv8_syscall(int call_no);
 
 #endif

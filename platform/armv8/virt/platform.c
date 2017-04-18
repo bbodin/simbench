@@ -12,6 +12,9 @@ void platform_init()
 
 void platform_shutdown()
 {
+	// attempt an ARM ANGEL semihosting shutdown
+	armv8_syscall(10);
+
 	while(1);
 }
 

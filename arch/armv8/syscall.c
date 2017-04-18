@@ -53,6 +53,12 @@ static int syscall_priv_leave() {
 	return 0;
 }
 
+static int syscall_shutdown() {
+	// attempt an ARM ANGEL semihosting shutdown
+	asm volatile ("mov x0, #0x18 \n ldr x1, =0x20026 \n hlt #0xf000 \n");	
+	return 0;
+}
+
 int syscall_mem_init();
 int syscall_mem_mmu_enable();
 int syscall_mem_mmu_disable();
@@ -74,6 +80,8 @@ int armv8_handle_syscall() {
 			return syscall_priv_enter();
 		case SYSCALL_PRIV_LEAVE:
 			return syscall_priv_leave();
+		case SYSCALL_SHUTDOWN:
+			return syscall_shutdown();
 		default:
 			return 1;
 	}
