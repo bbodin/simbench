@@ -2,7 +2,7 @@
 
 ARCHES=`ls -d -- arch/*`
 
-OK=1
+EC=0
 
 for THEARCH in $ARCHES; do
 	ARCHNAME=`echo $THEARCH | sed 's/^[^/]*\///g'`
@@ -22,14 +22,14 @@ for THEARCH in $ARCHES; do
 			echo " - OK"
 		else
 			echo " - failed"
-			OK=0
+			EC=1
 		fi
 		
 	done
 	
 done
 
-if [ $OK -eq "0" ]; then
+if [ $EC -eq "1" ]; then
 	echo "Some builds failed"
 else
 	echo "All builds succeeded"
